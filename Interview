@@ -70,3 +70,27 @@ RUN apt-get update && \
 ENTRYPOINT ["python3.py"]
 CMD ["manageserver.py" "runserver.py" "0.0.0.0/0"]
 
+
+###kubernetes deplyment file
+kind: Deployment
+apiVersion: apps/V1
+metadata:
+  name: nginx
+  lables:
+    app: nginx
+spec:
+  replicas: 2
+  selectors:
+    matchLables:
+      app: nginx
+  template:
+    metadata:
+       lables: 
+         app: nginx
+   containers:
+   -name: nginx-conatiner
+    images: nginx:latest
+    port"
+     containerPort: 80
+
+
