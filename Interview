@@ -58,3 +58,15 @@ git commit -m "first cmmit"
 git checkout main
 git merge hotfix
 
+####Docker file
+FROM ubuntu
+WORKDIR /app
+COPY requirementx.txt /app
+COPY devops /app
+RUN apt-get update && \
+     apt-get install  -y python3 python3.pip && \
+     pip install -y requirements.txt && \
+     cd devoops
+ENTRYPOINT ["python3.py"]
+CMD ["manageserver.py" "runserver.py" "0.0.0.0/0"]
+
