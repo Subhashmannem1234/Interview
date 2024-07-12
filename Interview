@@ -1,3 +1,4 @@
+####Terraform code
 Provider "aws" {
    region = "us-east-1"
 }
@@ -9,4 +10,39 @@ resource "aws_instance" "ec2" {
   tag {
     Name = ec2
   }
-  
+
+###jenkins file
+pipeline {
+  agent any 
+     stages {
+       stage (checkout) {
+          steps {
+             git clone
+          }
+       }
+      stage (Test) {
+          steps {
+             mvn package
+          }
+      }
+      stage (build docker image) {
+         steps {
+           docker build -t dockerfilename .
+         }
+      }
+      stage (docker push) {
+         steps {
+            docker push imagesname
+         }
+      }
+      stage (update k8s deployment ment file) {
+         steps {
+           replace docker images into k8s manifest file 
+         }
+       }
+       stage (deploy) {
+         steps {
+            kuberctl apply -f deplooyment.yaml
+         }
+      }
+   }
