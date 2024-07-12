@@ -1,0 +1,12 @@
+Provider "aws" {
+   region = "us-east-1"
+}
+resource "aws_instance" "ec2" {
+  ami  = var.ami
+  instance_type = var.instance_type
+  security_gorup_ids = var.sg
+  subnet_id  = var.subnt
+  tag {
+    Name = ec2
+  }
+  
