@@ -46,3 +46,15 @@ pipeline {
          }
       }
    }
+
+
+####Git code
+git branch hotfix
+git branch fearure
+git checkout hotfix
+touch file.txt
+git add file.txt
+git commit -m "first cmmit"
+git checkout main
+git merge hotfix
+
